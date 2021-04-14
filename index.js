@@ -8,6 +8,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :p
 
 
 app.use(cors())
+app.use(express.static('build'))
 let persons = [
   { id: 1, name: "Arto Hellas", number: "040-123456" },
   { id: 2, name: "Ada Lovelace", number: "39-44-5323523" },
