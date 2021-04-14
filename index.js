@@ -1,11 +1,13 @@
 const express = require("express");
 const morgan = require('morgan');
-
+const cors = require('cors')
 const app = express();
 app.use(express.json());
 //app.use(morgan('tiny'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :person'));
 
+
+app.use(cors())
 let persons = [
   { id: 1, name: "Arto Hellas", number: "040-123456" },
   { id: 2, name: "Ada Lovelace", number: "39-44-5323523" },
@@ -74,7 +76,7 @@ morgan.token("person", (req, res) => {
   }
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT);
 console.log(`app started on ${PORT}`);
